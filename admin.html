@@ -121,6 +121,156 @@
         .tab-content.active {
             display: block;
         }
+
+        /* Save button styling */
+        .btn-save {
+            background-color: var(--clr-accent);
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+
+        /* ===== RESPONSIVE ADMIN PANEL ===== */
+
+        /* Tablet breakpoint */
+        @media (max-width: 900px) {
+            body {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            /* Header bar: stack tabs and logout vertically */
+            .admin-topbar {
+                flex-direction: column;
+                align-items: stretch !important;
+                gap: 12px;
+            }
+            .tabs {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .tab-btn {
+                white-space: nowrap;
+                font-size: 0.95rem;
+                padding: 10px 14px;
+            }
+            /* Table: hide header, make each row a card */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead {
+                display: none;
+            }
+            tbody tr {
+                background: #fff;
+                border: 1px solid var(--clr-border);
+                border-radius: 8px;
+                padding: 14px;
+                margin-bottom: 12px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            }
+            td {
+                padding: 8px 0;
+                border-bottom: 1px solid #f0f0f0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: right;
+            }
+            td:last-child {
+                border-bottom: none;
+                justify-content: flex-start;
+                gap: 8px;
+                padding-top: 12px;
+            }
+            td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #888;
+                text-transform: uppercase;
+                font-size: 0.7rem;
+                letter-spacing: 0.5px;
+                text-align: left;
+                flex-shrink: 0;
+                margin-right: 12px;
+            }
+            td img {
+                width: 60px !important;
+                height: auto;
+                border-radius: 6px;
+            }
+            /* Modal: full screen on mobile */
+            .form-content {
+                max-width: 100%;
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
+                padding: 20px;
+                overflow-y: auto;
+            }
+            .form-modal {
+                align-items: flex-start;
+            }
+            /* Variant row: stack on smaller screens */
+            .variant-item {
+                flex-direction: column !important;
+                gap: 8px !important;
+            }
+            .variant-item input,
+            .variant-item select {
+                width: 100% !important;
+                flex: none !important;
+            }
+            .variant-item button {
+                align-self: flex-end;
+            }
+            .btn-add {
+                width: 100%;
+                text-align: center;
+            }
+            .btn-save {
+                width: 100%;
+            }
+        }
+
+        /* Phone breakpoint */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.4rem;
+                margin-bottom: 4px;
+            }
+            h1 + p {
+                font-size: 0.85rem;
+            }
+            .tab-btn {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+            .btn {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+            .btn-add {
+                font-size: 0.9rem !important;
+                padding: 10px 16px !important;
+            }
+            td {
+                font-size: 0.85rem;
+            }
+            .form-group label {
+                font-size: 0.85rem;
+            }
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,7 +278,7 @@
         <h1>Olfakta Admin Panel</h1>
         <p>Manajemen data parfum. Semua perubahan di sini akan langsung tampil di website.</p>
         
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div class="admin-topbar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTab('products')">Manajemen Parfum</button>
                 <button class="tab-btn" onclick="switchTab('brands')">Manajemen Brands</button>

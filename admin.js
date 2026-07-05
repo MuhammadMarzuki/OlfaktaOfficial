@@ -74,11 +74,11 @@ function renderTable() {
     products.forEach(product => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td><img src="${product.image}" alt="${product.name}" width="50" style="border-radius:4px;"></td>
-            <td><strong>${product.name}</strong><br><small>${product.id}</small></td>
-            <td>Rp${parseInt(product.price).toLocaleString('id-ID')}</td>
-            <td>${product.topNotes}</td>
-            <td>
+            <td data-label="Gambar"><img src="${product.image}" alt="${product.name}" width="50" style="border-radius:4px;"></td>
+            <td data-label="ID / Nama"><strong>${product.name}</strong><br><small>${product.id}</small></td>
+            <td data-label="Harga">Rp${parseInt(product.price).toLocaleString('id-ID')}</td>
+            <td data-label="Top Notes">${product.topNotes}</td>
+            <td data-label="Aksi">
                 <button class="btn btn-edit" onclick="editProduct('${product.id}')">Edit</button>
                 <button class="btn btn-delete" onclick="deleteProduct('${product.id}')">Hapus</button>
             </td>
@@ -316,10 +316,10 @@ function renderBrandTable() {
     brandsList.forEach(b => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td><img src="${b.logo}" style="width: 50px; height: 50px; object-fit: contain;"></td>
-            <td>${b.id}</td>
-            <td>${b.name}</td>
-            <td>
+            <td data-label="Logo"><img src="${b.logo}" style="width: 50px; height: 50px; object-fit: contain;"></td>
+            <td data-label="ID Brand">${b.id}</td>
+            <td data-label="Nama">${b.name}</td>
+            <td data-label="Aksi">
                 <button class="btn btn-save" onclick="editBrand('${b.id}')">Edit</button>
                 <button class="btn btn-delete" onclick="deleteBrand('${b.id}')">Hapus</button>
             </td>

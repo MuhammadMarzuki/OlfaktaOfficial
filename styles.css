@@ -695,28 +695,134 @@ input:focus, select:focus, textarea:focus {
         width: 95%;
         padding: 1.5rem;
     }
-    
-    /* Brands Carousel for Mobile */
-    .brands-carousel {
-        flex-wrap: nowrap !important;
-        overflow-x: auto;
-        justify-content: flex-start !important;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 20px; /* Space for scrollbar */
-        gap: 20px !important;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling di iOS */
+}
+
+/* =========================================
+   BRANDS PAGE - Responsive Grid
+   ========================================= */
+.brands-page-header {
+    text-align: center;
+    padding: 60px 20px 30px;
+}
+
+.brands-page-header h1 {
+    font-size: 3rem;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+}
+
+.brands-page-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+    padding: 20px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.brand-card {
+    cursor: pointer;
+    padding: 36px 24px;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    background: #fff;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.brand-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+
+.brand-card img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    margin-bottom: 18px;
+    transition: transform 0.3s ease;
+}
+
+.brand-card:hover img {
+    transform: scale(1.08);
+}
+
+.brand-card h3 {
+    font-size: 1.4rem;
+    color: var(--clr-text);
+    margin-bottom: 8px;
+}
+
+.brand-card .brand-cta {
+    color: var(--clr-accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: inline-block;
+    transition: letter-spacing 0.3s ease;
+}
+
+.brand-card:hover .brand-cta {
+    letter-spacing: 1px;
+}
+
+/* Brands page responsive breakpoints */
+@media (max-width: 900px) {
+    .brands-page-header {
+        padding: 40px 20px 20px;
     }
-    .brands-carousel::-webkit-scrollbar {
-        height: 6px;
+    .brands-page-header h1 {
+        font-size: 2.2rem;
     }
-    .brands-carousel::-webkit-scrollbar-thumb {
-        background: #ccc;
-        border-radius: 10px;
+    .brands-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 16px;
+        padding: 16px 4%;
     }
-    .brand-item {
-        flex: 0 0 auto;
-        width: 150px;
-        scroll-snap-align: start;
+    .brand-card {
+        padding: 24px 16px;
+    }
+    .brand-card img {
+        width: 100px;
+        height: 100px;
+    }
+    .brand-card h3 {
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brands-page-header h1 {
+        font-size: 1.8rem;
+    }
+    .brands-page-header p {
+        font-size: 0.95rem;
+    }
+    .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 12px 3%;
+    }
+    .brand-card {
+        padding: 20px 12px;
+        border-radius: 12px;
+    }
+    .brand-card img {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 12px;
+    }
+    .brand-card h3 {
+        font-size: 1rem;
+    }
+    .brand-card .brand-cta {
+        font-size: 0.8rem;
     }
 }
 

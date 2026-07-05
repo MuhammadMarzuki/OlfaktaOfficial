@@ -116,17 +116,15 @@ async function renderBrands(containerId) {
         if (!response.ok) throw new Error("Gagal memuat brands");
         
         const brands = await response.json();
-        let html = '<div class="mood-grid brands-carousel" style="justify-content: center; display: flex; flex-wrap: wrap; padding: 0 20px;">';
+        let html = '<div class="brands-grid">';
         
         brands.forEach(b => {
             html += `
-            <div class="brand-item animate-on-scroll slide-up" style="cursor: pointer; padding: 30px; border: 1px solid #eee; border-radius: 16px; background: #fff; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.03);" 
-                 onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.1)';" 
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.03)';"
+            <div class="brand-card animate-on-scroll slide-up"
                  onclick="window.location.href='semua-produk.html?brand=${encodeURIComponent(b.name)}'">
-                <img src="${b.logo}" alt="${b.name}" style="width: 150px; height: 150px; object-fit: contain; margin-bottom: 20px;">
-                <h3 style="font-size: 1.5rem; color: var(--clr-text);">${b.name}</h3>
-                <p style="color: var(--clr-accent); font-weight: 600; margin-top: 10px;">Lihat Produk &rarr;</p>
+                <img src="${b.logo}" alt="${b.name}">
+                <h3>${b.name}</h3>
+                <span class="brand-cta">Lihat Produk &rarr;</span>
             </div>
             `;
         });
