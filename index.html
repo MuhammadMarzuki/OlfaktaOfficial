@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLFAKTA</title>
+    <link rel="icon" type="image/png" href="assets/olfaktaLogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,600;0,800;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="app-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/olfaktaLogo.png" alt="Olfakta Logo" class="brand-logo">
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-list" id="nav-list">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="semua-produk.html">Semua Produk</a></li>
+                    <li><a href="brands.html">Brands</a></li>
+                    <li><a href="scent-profiling.html">Scent Profiling <span
+                                style="background: var(--clr-accent); color: #fff; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; vertical-align: top; margin-left: 2px; font-weight: 800; letter-spacing: 1px;">SOON</span></a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="cart-icon" style="cursor: pointer;" onclick="openCart()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-image-wrapper">
+            <img src="assets/olfakta.png" alt="Teman-teman berbagi momen menyenangkan" class="hero-photo">
+        </div>
+        <div class="hero-content">
+            <h1>Semprotkan kebahagiaan. <br> Nikmati hidup sepenuhnya.</h1>
+            <p>Temui koleksi yang diciptakan untuk gerak, emosi, dan ekspresi sehari-hari.</p>
+            <a href="#moods" class="cta-primary">Temukan Suasana Hatimu</a>
+        </div>
+    </section>
+
+    <!-- Moods Section -->
+    <section id="moods" class="moods-section">
+        <div class="section-title">
+            <h2>Kamu ingin merasa seperti apa?</h2>
+            <p>Setiap aroma Olfakta dirancang berdasarkan emosi tertentu.</p>
+        </div>
+        <div class="mood-grid">
+            <div class="mood-card mood-electric">
+                <div class="mood-label">Bersemangat & Berani</div>
+                <h3>Baba Parfum</h3>
+                <p>Penuh dengan aroma jeruk dan freesia liar. Dirancang untuk kamu yang ingin tampil beda dan penuh
+                    energi.</p>
+                <a href="#electric-bloom" class="shop-mood">Belanja Mood Ini</a>
+            </div>
+            <div class="mood-card mood-dreamy">
+                <div class="mood-label">Tenang & Merenung</div>
+                <h3>Soft Indigo</h3>
+                <p>Lavender, teh asap, dan linen segar. Menghadirkan ketenangan seperti sore yang sunyi dan damai.</p>
+                <a href="#soft-indigo" class="shop-mood">Belanja Mood Ini</a>
+            </div>
+            <div class="mood-card mood-warm">
+                <div class="mood-label">Misterius & Elegan</div>
+                <h3>Midnight Smoke</h3>
+                <p>Campuran kayu, kulit, dan vanila hitam yang memabukkan. Klasik dan sempurna untuk malam yang panjang.
+                </p>
+                <a href="#midnight-smoke" class="shop-mood">Belanja Mood Ini</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section (CMS) -->
+    <section class="moods-section" style="background-color: #fcfcfc;">
+        <div class="section-title">
+            <h2>Shop by Brands</h2>
+            <p>Jelajahi koleksi dari brand-brand pilihan kami.</p>
+        </div>
+        <div id="home-brands-container" class="mood-grid brands-carousel"
+            style="justify-content: center; gap: 40px; display: flex; flex-wrap: wrap;">
+            <!-- Brand logos diisi oleh JS -->
+        </div>
+    </section>
+
+    <!-- CMS: Products Container -->
+    <div id="home-products-container"></div>
+
+    <!-- Keranjang Belanja Modal -->
+    <div id="cart-modal" style="display: none;">
+        <div class="cart-center-modal">
+            <div class="cart-modal-header">
+                <h2>Keranjang Belanja</h2>
+                <button class="close-modal-btn"
+                    onclick="document.getElementById('cart-modal').style.display='none'">&times;</button>
+            </div>
+
+            <div id="cart-items"></div>
+            <div id="cart-total" style="font-weight: 800; font-size: 1.2rem; margin: 20px 0;"></div>
+
+            <div id="checkout-form">
+                <input type="text" id="cust-name" placeholder="Nama Lengkap">
+                <input type="text" id="cust-phone" placeholder="No HP">
+                <textarea id="cust-address" placeholder="Alamat Lengkap"></textarea>
+                <select id="payment-method">
+                    <option value="QRIS">QRIS</option>
+                    <option value="COD">COD (Bayar di Tempat)</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                </select>
+                <button onclick="checkout()" class="cta-primary" style="width: 100%; border: none;">Order via
+                    WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

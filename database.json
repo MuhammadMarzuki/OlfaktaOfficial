@@ -1,0 +1,201 @@
+[
+    {
+        "id": "baba-parfum",
+        "name": "Baba Parfum",
+        "price": 15000,
+        "image": "assets/babaParfum.webp",
+        "brand": "Olfakta Originals",
+        "bgColor": "",
+        "topNotes": "Jeruk darah, Mandarin",
+        "middleNotes": "Bunga melati, Freesia liar",
+        "baseNotes": "Musk bersih, Garam laut",
+        "notesSummary": "Aroma ini dibuka dengan kesegaran yang cerah, mekar menjadi perpaduan bunga menawan, dan meninggalkan jejak musk segar.",
+        "story": "Energi festival musik dalam sebuah botol. Tampil berani dan cerah.",
+        "variants": [
+            {
+                "name": "Full Size (50ml)",
+                "price": 150000,
+                "available": false
+            },
+            {
+                "name": "Decant 10ml",
+                "price": 50000,
+                "available": false
+            },
+            {
+                "name": "Decant 3ml",
+                "price": 20000,
+                "available": false
+            },
+            {
+                "name": "Decant 2ml",
+                "price": 15000,
+                "available": false
+            }
+        ]
+    },
+    {
+        "id": "soft-indigo",
+        "name": "Soft Indigo",
+        "price": 17000,
+        "image": "assets/softIndigo.png",
+        "brand": "Olfakta Originals",
+        "bgColor": "#FFFFFF",
+        "topNotes": "Lavender, Mint lembut",
+        "middleNotes": "Teh asap, Bunga kapas",
+        "baseNotes": "Linen segar, Kayu putih",
+        "notesSummary": "Membawa ketenangan instan yang perlahan memeluk dengan hangat, sebelum menetap menjadi wangi yang sangat nyaman.",
+        "story": "Dirancang untuk memberi Anda momen kedamaian di tengah dunia yang kacau.",
+        "variants": [
+            {
+                "name": "Full Size (50ml)",
+                "price": 165000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 10ml",
+                "price": 55000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 3ml",
+                "price": 25000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 2ml",
+                "price": 17000,
+                "status": "coming_soon"
+            }
+        ]
+    },
+    {
+        "id": "midnight-smoke",
+        "name": "Midnight Smoke",
+        "price": 18000,
+        "image": "assets/midnightSmoke.png",
+        "brand": "Olfakta Originals",
+        "bgColor": "",
+        "topNotes": "Lada hitam, Cengkeh",
+        "middleNotes": "Kulit, Tembakau",
+        "baseNotes": "Vanilla hitam, Amber",
+        "notesSummary": "Sebuah aroma yang intens dan memikat yang diawali sentuhan rempah berani, dan ditutup dengan pelukan hangat yang mewah.",
+        "story": "Klasik kami. Campuran kayu, kulit, dan vanila yang berat memabukkan yang bertahan hingga pagi.",
+        "variants": [
+            {
+                "name": "Full Size (50ml)",
+                "price": 180000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 10ml",
+                "price": 60000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 3ml",
+                "price": 28000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 2ml",
+                "price": 18000,
+                "status": "coming_soon"
+            }
+        ]
+    },
+    {
+        "id": "golden-oudh",
+        "name": "Golden Oudh",
+        "price": 20000,
+        "image": "assets/goldenOudh.png",
+        "brand": "Olfakta Originals",
+        "bgColor": "#FFFFFF",
+        "topNotes": "Bunga saffron, Mawar",
+        "middleNotes": "Cendana, Patchouli",
+        "baseNotes": "Kayu gaharu (oudh), Musk emas",
+        "notesSummary": "Kemewahan eksotis yang sesungguhnya. Dibuka dengan keanggunan bunga yang mahal, menyatu dengan kehangatan kayu yang intim.",
+        "story": "Kemewahan yang eksotis. Menggabungkan wangi floral yang mahal dengan kayu gaharu yang intim.",
+        "variants": [
+            {
+                "name": "Full Size (50ml)",
+                "price": 220000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 10ml",
+                "price": 75000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 3ml",
+                "price": 35000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 2ml",
+                "price": 20000,
+                "status": "coming_soon"
+            }
+        ]
+    },
+    {
+        "id": "vanilla-sky",
+        "name": "Vanilla Sky",
+        "price": 12000,
+        "image": "assets/vanillaSky.png",
+        "brand": "Olfakta Originals",
+        "bgColor": "",
+        "topNotes": "Kelapa bakar, Almond",
+        "middleNotes": "Karamel, Bunga heliotrope",
+        "baseNotes": "Vanilla Madagaskar, Tonka bean",
+        "notesSummary": "Aroma manis yang memeluk dengan hangat, diawali perpaduan lezat kelapa dan almond, sebelum ditutup oleh kekayaan vanilla.",
+        "story": "Manis dan menggoda layaknya kue yang baru matang. Cocok untuk sehari-hari yang ringan.",
+        "variants": [
+            {
+                "name": "Full Size (50ml)",
+                "price": 140000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 10ml",
+                "price": 45000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 3ml",
+                "price": 18000,
+                "status": "coming_soon"
+            },
+            {
+                "name": "Decant 2ml",
+                "price": 12000,
+                "status": "coming_soon"
+            }
+        ]
+    },
+    {
+        "name": "Monacruz Moon Rabbit",
+        "price": 40000,
+        "brand": "Monacruz",
+        "image": "assets/1783257036148-id-11134207-81zte-mfms593bd4p68f.jpg",
+        "topNotes": "Pear, Mandarine Orange",
+        "middleNotes": "Tuberos, Mandarine Blossom, Fressia",
+        "baseNotes": "Amber, Cedarwood, White Musk",
+        "notesSummary": "Monacruz Moon Rabbit adalah parfum unisex dengan aroma segar yang dipadukan dengan sentuhan manis. Cocok digunakan sehari-hari, aromanya memberikan kesan alami yang nyaman, terutama saat beraktivitas di luar ruangan. \n\n",
+        "story": "-",
+        "variants": [
+            {
+                "name": "Decant (10ml)",
+                "price": 40000,
+                "status": "available"
+            },
+            {
+                "name": "Full Size (35ml)",
+                "price": 130000,
+                "status": "available"
+            }
+        ],
+        "id": "monacruz-moon-rabbit"
+    }
+]

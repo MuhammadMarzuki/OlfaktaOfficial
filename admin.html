@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olfakta CMS Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --clr-bg: #f9f8f6;
+            --clr-text: #2c2c2c;
+            --clr-accent: #c89b53; /* Golden Brown */
+            --clr-border: #e0dcd3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--clr-bg);
+            color: var(--clr-text);
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--clr-accent);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--clr-border);
+        }
+        th {
+            background-color: #f1f0ea;
+            font-weight: 600;
+        }
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: white;
+        }
+        .btn-edit { background-color: #4a90e2; }
+        .btn-delete { background-color: #e74c3c; }
+        .btn-add { background-color: var(--clr-accent); margin-bottom: 20px; font-size: 1rem; padding: 12px 24px;}
+        .form-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+        .form-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--clr-border);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        .close-btn {
+            float: right;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #888;
+        }
+        
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #888;
+            outline: none;
+        }
+        .tab-btn.active {
+            color: var(--clr-accent);
+            border-bottom: 3px solid var(--clr-accent);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Olfakta Admin Panel</h1>
+        <p>Manajemen data parfum. Semua perubahan di sini akan langsung tampil di website.</p>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('products')">Manajemen Parfum</button>
+                <button class="tab-btn" onclick="switchTab('brands')">Manajemen Brands</button>
+            </div>
+            <button class="btn" style="background-color: #555; padding: 12px 24px; margin-bottom: 0;" onclick="logout()">Logout / Keluar</button>
+        </div>
+
+        <!-- TAB: PRODUCTS -->
+        <div id="tab-products" class="tab-content active">
+            <button class="btn btn-add" style="margin-bottom: 20px;" onclick="openForm()">+ Tambah Parfum Baru</button>
+            <table>
+            <thead>
+                <tr>
+                    <th>Gambar</th>
+                    <th>ID / Nama</th>
+                    <th>Harga Dasar</th>
+                    <th>Top Notes</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="product-table-body">
+                <!-- Data diisi oleh JS -->
+            </tbody>
+        </table>
+        </div>
+
+        <!-- TAB: BRANDS -->
+        <div id="tab-brands" class="tab-content">
+            <button class="btn btn-add" style="margin-bottom: 20px;" onclick="openBrandForm()">+ Tambah Brand Baru</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>ID Brand</th>
+                        <th>Nama Brand</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="brand-table-body">
+                    <!-- Data diisi oleh JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Form -->
+    <div id="product-modal" class="form-modal">
+        <div class="form-content">
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+            <h2 id="modal-title">Tambah Parfum</h2>
+            <form id="product-form">
+                <input type="hidden" id="form-mode" value="add">
+                <input type="hidden" id="product-id">
+                
+                <div class="form-group">
+                    <label>Nama Parfum</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Brand/Kategori</label>
+                    <select id="brand" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                        <!-- Opsi akan diisi oleh JS dari data Brands -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Upload Gambar Parfum (Opsional saat edit)</label>
+                    <input type="file" id="imageFile" accept="image/*">
+                    <small id="current-image-path" style="display:block; margin-top:5px; color:#888;"></small>
+                    <input type="hidden" id="image" value="">
+                </div>
+                
+                <div class="form-group" style="background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee;">
+                    <label style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        Varian Ukuran & Harga (Decant/Full Size)
+                        <button type="button" class="btn btn-add" style="padding: 5px 10px; margin: 0; font-size: 0.9rem;" onclick="addVariantField()">+ Tambah Varian</button>
+                    </label>
+                    <div id="variants-container">
+                        <!-- Variant fields will be injected here by JS -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Top Notes</label>
+                    <input type="text" id="topNotes" required>
+                </div>
+                <div class="form-group">
+                    <label>Middle Notes</label>
+                    <input type="text" id="middleNotes" required>
+                </div>
+                <div class="form-group">
+                    <label>Base Notes</label>
+                    <input type="text" id="baseNotes" required>
+                </div>
+                <div class="form-group">
+                    <label>Ringkasan Aroma (Notes Summary)</label>
+                    <textarea id="notesSummary" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Cerita/Deskripsi Panjang</label>
+                    <textarea id="story" rows="3" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-save" id="save-btn">Simpan Data</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Form BRAND -->
+    <div id="brand-modal" class="form-modal">
+        <div class="form-content">
+            <span class="close-btn" onclick="closeBrandForm()">&times;</span>
+            <h2 id="brand-modal-title">Tambah Brand</h2>
+            <form id="brand-form">
+                <input type="hidden" id="brand-form-mode" value="add">
+                <input type="hidden" id="brand-id-input">
+                
+                <div class="form-group">
+                    <label>Nama Brand</label>
+                    <input type="text" id="brand-name" required placeholder="Contoh: Olfakta Originals">
+                </div>
+                <div class="form-group">
+                    <label>Upload Logo Brand</label>
+                    <input type="file" id="brand-imageFile" accept="image/*">
+                    <small id="brand-current-image-path" style="display:block; margin-top:5px; color:#888;"></small>
+                    <input type="hidden" id="brand-image" value="">
+                </div>
+                
+                <button type="submit" class="btn btn-save" id="brand-save-btn">Simpan Brand</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+    <script>
+        // Tab switching logic
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            if (tabName === 'products') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('tab-products').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('tab-brands').classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

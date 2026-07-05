@@ -1,0 +1,17 @@
+[
+    {
+        "id": "olfakta",
+        "name": "Olfakta Originals",
+        "logo": "assets/olfaktaLogo.png"
+    },
+    {
+        "name": "HMNS",
+        "logo": "assets/1783256657505-images.png",
+        "id": "hmns"
+    },
+    {
+        "name": "Monacruz",
+        "logo": "assets/1783256681282-Logo-Monacruz.webp",
+        "id": "monacruz"
+    }
+]

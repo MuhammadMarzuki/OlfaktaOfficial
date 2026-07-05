@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semua Produk | OLFAKTA</title>
+    <link rel="icon" type="image/png" href="assets/olfaktaLogo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,600;0,800;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/olfaktaLogo.png" alt="Olfakta Logo" class="brand-logo">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list" id="nav-list">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="semua-produk.html" style="color: var(--clr-accent);">Semua Produk</a></li>
+                    <li><a href="brands.html">Brands</a></li>
+                    <li><a href="scent-profiling.html">Scent Profiling <span style="background: var(--clr-accent); color: #fff; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; vertical-align: top; margin-left: 2px; font-weight: 800; letter-spacing: 1px;">SOON</span></a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="cart-icon" style="cursor: pointer;" onclick="openCart()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <div style="text-align: center; padding: 50px 0 20px;">
+        <h1 id="page-title" style="font-size: 3rem;">Koleksi Lengkap</h1>
+        <p>Eksplorasi aroma tanpa batas. Temukan decant atau botol penuh favoritmu.</p>
+        
+        <!-- SEARCH BAR BARU (Tengah Halaman) -->
+        <div class="page-search-container">
+            <input type="text" id="search-input" class="page-search-bar" placeholder="Cari nama parfum, notes (ex: Vanilla), atau aroma...">
+        </div>
+        
+        <!-- FILTER CHIPS (Kategori Aroma) -->
+        <div class="filter-chips-container" id="filter-chips">
+            <div class="filter-chip active" data-filter="all">Semua Aroma</div>
+            <div class="filter-chip" data-filter="manis">Manis / Sweet</div>
+            <div class="filter-chip" data-filter="segar">Segar / Fresh</div>
+            <div class="filter-chip" data-filter="floral">Floral</div>
+            <div class="filter-chip" data-filter="woody">Woody</div>
+            <div class="filter-chip" data-filter="vanilla">Vanilla</div>
+            <div class="filter-chip" data-filter="spicy">Spicy</div>
+        </div>
+    </div>
+
+    <!-- CMS: Products Container -->
+    <div id="all-products-container"></div>
+
+    <!-- Tempatkan modal cart disini (sama persis dengan di index.html) -->
+    <div id="cart-modal" style="display: none;">
+        <div class="cart-center-modal">
+            <div class="cart-modal-header">
+                <h2>Keranjang Belanja</h2>
+                <button class="close-modal-btn" onclick="document.getElementById('cart-modal').style.display='none'">&times;</button>
+            </div>
+            
+            <div id="cart-items"></div>
+            <div id="cart-total" style="font-weight: 800; font-size: 1.2rem; margin: 20px 0;"></div>
+            
+            <div id="checkout-form">
+                <input type="text" id="cust-name" placeholder="Nama Lengkap">
+                <input type="text" id="cust-phone" placeholder="No HP">
+                <textarea id="cust-address" placeholder="Alamat Lengkap"></textarea>
+                <select id="payment-method">
+                    <option value="QRIS">QRIS</option>
+                    <option value="COD">COD (Bayar di Tempat)</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                </select>
+                <button onclick="checkout()" class="cta-primary" style="width: 100%; border: none;">Order via WhatsApp</button>
+            </div>
+        </div>
+    </div>
+    <div id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

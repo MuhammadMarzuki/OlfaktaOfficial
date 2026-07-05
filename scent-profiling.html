@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scent Profiling | OLFAKTA</title>
+    <link rel="icon" type="image/png" href="assets/olfaktaLogo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,600;0,800;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .quiz-question {
+            margin-bottom: 30px;
+        }
+        .quiz-question h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--clr-text);
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quiz-option:hover {
+            border-color: var(--clr-accent);
+            background-color: rgba(200, 155, 83, 0.05);
+        }
+        .quiz-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--clr-accent);
+            cursor: pointer;
+            margin: 0;
+        }
+        .quiz-option label {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+        .quiz-btn {
+            width: 100%;
+            padding: 20px;
+            background-color: var(--clr-accent);
+            color: #fff;
+            border: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            margin-top: 20px;
+        }
+        .quiz-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(200, 155, 83, 0.3);
+        }
+        #quiz-result {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: var(--clr-mint);
+            border-radius: 16px;
+            text-align: center;
+        }
+        #quiz-result h2 {
+            font-size: 2rem;
+            color: var(--clr-text);
+            margin-bottom: 10px;
+        }
+        #recom-name {
+            font-size: 2.5rem;
+            color: var(--clr-accent);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        #recom-reason {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body style="background-color: var(--clr-bg);">
+    <header class="app-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/olfaktaLogo.png" alt="Olfakta Logo" class="brand-logo">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list" id="nav-list">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="semua-produk.html">Semua Produk</a></li>
+                    <li><a href="brands.html">Brands</a></li>
+                    <li><a href="scent-profiling.html" style="color: var(--clr-accent);">Scent Profiling <span style="background: var(--clr-accent); color: #fff; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; vertical-align: top; margin-left: 2px; font-weight: 800; letter-spacing: 1px;">SOON</span></a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="cart-icon" style="cursor: pointer;" onclick="openCart()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div style="text-align: center; padding: 50px 0 0;">
+        <h1 style="font-size: 3rem;" class="animate-on-scroll slide-up">Scent Profiling AI</h1>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 10px auto;" class="animate-on-scroll fade-in">Ceritakan suasana, memori, atau perasaan yang ingin Anda rasakan hari ini, dan AI kami akan mencarikan wangi yang tepat untuk Anda.</p>
+    </div>
+
+    <div class="quiz-container animate-on-scroll scale-in" style="text-align: center; padding: 60px 20px;">
+        <h2 style="font-size: 2.5rem; color: var(--clr-accent); margin-bottom: 20px; font-weight: 800; letter-spacing: 2px;">COMING SOON</h2>
+        <p style="font-size: 1.2rem; color: #555; max-width: 500px; margin: 0 auto 30px;">
+            Fitur Artificial Intelligence canggih kami sedang dalam tahap penyempurnaan akhir.
+            Sebentar lagi, Anda bisa mendapatkan rekomendasi parfum yang paling personal dari AI!
+        </p>
+        <a href="semua-produk.html" class="cta-primary">Jelajahi Produk Kami</a>
+    </div>
+
+    <!-- Modal Keranjang -->
+    <div id="cart-modal" style="display: none;">
+        <div class="cart-center-modal">
+            <div class="cart-modal-header">
+                <h2>Keranjang Belanja</h2>
+                <button class="close-modal-btn" onclick="document.getElementById('cart-modal').style.display='none'">&times;</button>
+            </div>
+            <div id="cart-items"></div>
+            <div id="cart-total" style="font-weight: 800; font-size: 1.2rem; margin: 20px 0;"></div>
+            <div id="checkout-form">
+                <input type="text" id="cust-name" placeholder="Nama Lengkap">
+                <input type="text" id="cust-phone" placeholder="No HP">
+                <textarea id="cust-address" placeholder="Alamat Lengkap"></textarea>
+                <select id="payment-method">
+                    <option value="QRIS">QRIS</option>
+                    <option value="COD">COD (Bayar di Tempat)</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                </select>
+                <button onclick="checkout()" class="cta-primary" style="width: 100%; border: none;">Order via WhatsApp</button>
+            </div>
+        </div>
+    </div>
+    <div id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>
